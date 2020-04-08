@@ -13,8 +13,8 @@
           <router-link to="/room">
             <v-list-item >Habitaciones</v-list-item>
           </router-link>
-          <router-link to="/entry">
-            <v-list-item >Entrada</v-list-item>
+          <router-link to="/date">
+            <v-list-item >Citas</v-list-item>
           </router-link>
             <router-link to="/stock">
             <v-list-item >Inventario</v-list-item>

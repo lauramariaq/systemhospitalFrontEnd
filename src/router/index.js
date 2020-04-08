@@ -4,6 +4,8 @@ import Home from '../views/Home.vue'
 import TableDoctor from '../components/tableDoctor/tableDoctor.vue'
 import TablePatient from '../components/tablePatient/tablePatient.vue'
 import TableRoom from '../components/tableRoom/tableRoom.vue'
+import TableDate from '../components/tableDate/tableDate.vue'
+
 
 
 Vue.use(VueRouter)
@@ -35,6 +37,15 @@ Vue.use(VueRouter)
     path: '/room',
     name: 'Room',
     component:TableRoom
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+   },
+   
+  {
+    path: '/date',
+    name: 'Date',
+    component:TableDate
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
