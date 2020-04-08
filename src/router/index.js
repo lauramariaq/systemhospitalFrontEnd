@@ -6,6 +6,8 @@ import TablePatient from '../components/tablePatient/tablePatient.vue'
 import TableRoom from '../components/tableRoom/tableRoom.vue'
 import TableDate from '../components/tableDate/tableDate.vue'
 import TableIncome from '../components/tableIncome/tableIncome.vue'
+import TableAlta from '../components/tableAlta/tableAlta.vue'
+
 
 
 
@@ -57,6 +59,14 @@ Vue.use(VueRouter)
     path: '/income',
     name: 'Income',
     component:TableIncome
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+   }
+   ,  {
+    path: '/alta',
+    name: 'Alta',
+    component:TableAlta
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
