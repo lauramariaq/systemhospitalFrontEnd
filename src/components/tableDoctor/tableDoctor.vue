@@ -26,6 +26,8 @@
     
         <v-dialog v-model="dialog" max-width="500px">
           <template v-slot:activator="{ on }">
+            
+           <v-btn @click="generatePdf">print</v-btn>
             <v-btn color="primary" dark class="mb-2" v-on="on">Agregar Doctor</v-btn>
           </template>
           <v-card>
@@ -62,6 +64,7 @@
               <v-btn color="blue darken-1" text @click="createDoctor">Guardar</v-btn>
             </v-card-actions>
           </v-card>
+          
         </v-dialog>
       </v-toolbar>
     </template>
@@ -87,6 +90,8 @@
 </template>
 <script>
 import axios from 'axios'
+import jsPDF from 'jspdf'
+import 'jspdf-autotable'
 
   export default {
     data: () => ({
@@ -129,6 +134,32 @@ import axios from 'axios'
     },
 
     methods: {
+      generatePdf(){
+          var doc = new jsPDF()
+ 
+                var body =[]
+  var columns = [
+    { header: 'Nombre', dataKey: 'name' },
+    { header: 'Exequator', dataKey: 'exequator' },
+    { header: 'Specialty', dataKey: 'specialty' },
+
+  ]
+     
+        this.doctors.map((x) =>{
+          body.push({name:x.name,exequator:x.exequator,specialty:x.specialty})
+        }),
+
+     doc.autoTable({
+
+ columns,
+ body
+})
+
+doc.text('    listado de doct', 1, 1)
+doc.save('doctores')
+ 
+
+      },
      
      getDoctors(){
       
