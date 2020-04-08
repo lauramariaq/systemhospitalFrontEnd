@@ -16,8 +16,8 @@
           <router-link to="/date">
             <v-list-item >Citas</v-list-item>
           </router-link>
-            <router-link to="/stock">
-            <v-list-item >Inventario</v-list-item>
+            <router-link to="/income">
+            <v-list-item >Ingresos</v-list-item>
           </router-link>
            <router-link to="/billing">
             <v-list-item >facturacion</v-list-item>

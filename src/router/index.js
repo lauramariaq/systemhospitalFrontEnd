@@ -5,6 +5,8 @@ import TableDoctor from '../components/tableDoctor/tableDoctor.vue'
 import TablePatient from '../components/tablePatient/tablePatient.vue'
 import TableRoom from '../components/tableRoom/tableRoom.vue'
 import TableDate from '../components/tableDate/tableDate.vue'
+import TableIncome from '../components/tableIncome/tableIncome.vue'
+
 
 
 
@@ -46,6 +48,15 @@ Vue.use(VueRouter)
     path: '/date',
     name: 'Date',
     component:TableDate
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+   }
+   ,
+   {
+    path: '/income',
+    name: 'Income',
+    component:TableIncome
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
