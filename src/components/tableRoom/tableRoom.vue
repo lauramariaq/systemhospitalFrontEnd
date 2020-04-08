@@ -46,7 +46,15 @@
                     <v-text-field type="number" :rules="nameRules" :counter="3" required v-model="number" label="Numero habitacion"></v-text-field>
                   </v-col>
                   <v-col cols="12">
-                    <v-text-field  v-model="type" label="Tipo habitacion"></v-text-field>
+        <v-select
+        v-model="nameRoom"
+          :items="types"
+          label="Selecione el tipo de habitacion"
+        ></v-select>
+        
+                  </v-col>
+                    <v-col cols="12" >
+                    <v-text-field v-model="priceRoom" disabled label="Precio habitacion"></v-text-field>
                   </v-col>
                   <v-col cols="12" >
                     <v-text-field v-model="price" label="Precio habitacion"></v-text-field>
@@ -92,10 +100,13 @@ import axios from 'axios'
     data: () => ({
       dialog: false,
       valid: false,
-      room:[],
+      rooms:[],
       search:'',
       id:null,
       editedIndex: -1,
+      types:['Suite','Doble','Privada'],
+      priceRoom:0,
+      nameRoom:'',
       headers: [
        
         { text: 'Numero Habitacion', value: 'number' },
@@ -116,6 +127,20 @@ import axios from 'axios'
       formTitle () {
         return this.editedIndex === -1 ? 'Nueva habitacion' : 'Editar habitacion'
       },
+      // nameRoom(){
+      //   if(this.nameRoom == 'Doble'){
+      //     this.priceRoom = 2500;
+      //     return this.priceRoom;
+      //   }
+      //   else if(this.nameRoom == 'Regular'){
+      //     this.priceRoom = 4000;
+      //     return this.priceRoom;
+      //   }
+      //   else{
+      //       this.priceRoom = 6000;
+      //       return this.priceRoom;
+      //   }
+      // }
     },
 
     watch: {
@@ -133,7 +158,7 @@ import axios from 'axios'
      getRoom(){
       
         axios.get('Rooms/GetAll').then(response =>{
-          this.doctors = response.data;
+          this.rooms = response.data;
         })
      },
 
