@@ -26,6 +26,7 @@
     
         <v-dialog v-model="dialog" max-width="500px">
           <template v-slot:activator="{ on }">
+                       <v-btn @click="generatePdf">print</v-btn>
             <v-btn color="primary" dark class="mb-2" v-on="on">Agregar Paciente</v-btn>
           </template>
           <v-card>
@@ -92,7 +93,8 @@
 </template>
 <script>
 import axios from 'axios'
-
+import jsPDF from 'jspdf'
+import 'jspdf-autotable'
   export default {
     data: () => ({
       dialog: false,
@@ -136,6 +138,33 @@ import axios from 'axios'
     },
 
     methods: {
+
+       generatePdf(){
+          var doc = new jsPDF()
+ 
+                var body =[]
+  var columns = [
+    { header: 'Nombre', dataKey: 'name' },
+    { header: 'Cedula', dataKey: 'cedula' },
+    { header: 'Seguro Medico', dataKey: 'insurance' },
+
+  ]
+     
+        this.doctors.map((x) =>{
+          body.push({name:x.name,cedula:x.cedula,insurance:x.insurance})
+        }),
+
+     doc.autoTable({
+
+ columns,
+ body
+})
+
+doc.text('    listado de pacientes', 1, 1)
+doc.save('patients')
+ 
+
+      },
      getPatients(){
         axios.get('Patient/GetAll').then(response =>{
           this.patients = response.data;
